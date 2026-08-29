@@ -2,7 +2,7 @@
 
 <img src="images/icon.jpg" alt="蓝色大肥鱼" width="120" />
 
-# 🐟 蓝色大肥鱼 (BlueFatFish)
+# 🐋 蓝色大肥鱼 (BlueFatFish)
 
 **一款面向 DeepSeek 用户的轻量 Android 助手**
 

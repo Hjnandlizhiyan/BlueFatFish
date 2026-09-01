@@ -59,18 +59,18 @@
 ---
 
 ## 项目结构
-BlueFatFish_Git\
-├─ .gitignore
-├─ LICENSE
-├─ build.gradle.kts
-├─ settings.gradle.kts
-├─ gradle.properties
-├─ gradlew / gradlew.bat
-├─ version.properties
-├─ gradle\
-└─ app\
-   ├─ build.gradle.kts
-   ├─ .gitignore
+BlueFatFish_Git\ <br>
+├─ .gitignore<br>
+├─ LICENSE<br>
+├─ build.gradle.kts<br>
+├─ settings.gradle.kts<br>
+├─ gradle.properties<br>
+├─ gradlew / gradlew.bat<br>
+├─ version.properties<br>
+├─ gradle\<br>
+└─ app\<br>
+   ├─ build.gradle.kts<br>
+   ├─ .gitignore<br>
    └─ src\        ← 完整源码与资源
 
 ## 📥 下载

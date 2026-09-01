@@ -1,0 +1,50 @@
+# Add project specific R8 rules here.
+# AGP will combine all keep rule files in src/main/keepRules to pass to R8
+#
+# For more details, see
+#   https://d.android.com/r/tools/r8/keep-rules
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# ===== kotlinx.serialization 序列化规则 =====
+# 保留 @Serializable 类的 Companion 字段（避免通过 getDeclaredClasses 查找序列化器）
+-if @kotlinx.serialization.Serializable class **
+-keepclassmembers class <1> {
+    static <1>$Companion Companion;
+}
+
+# 保留 Companion 上的 serializer()（@Serializable 类序列化所需）
+-if @kotlinx.serialization.Serializable class ** {
+    static **$* *;
+}
+-keepclassmembers class <2>$<3> {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+# 保留 serializable object 的 INSTANCE.serializer()
+-if @kotlinx.serialization.Serializable class ** {
+    public static ** INSTANCE;
+}
+-keepclassmembers class <1> {
+    public static <1> INSTANCE;
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+# @Serializable / @SerialName 在运行期用于多态序列化
+-keepattributes RuntimeVisibleAnnotations,AnnotationDefault
+
+-dontnote kotlinx.serialization.**
+
+# ===== 数据模型兜底保留（防止序列化类被裁剪/混淆导致运行时崩溃）=====
+-keep class com.bigfatfish.release.data.model.** { *; }
+-keepclasseswithmembers class com.bigfatfish.release.data.model.** {
+    kotlinx.serialization.KSerializer serializer(...);
+}
+
+# ===== 忽略 Tink/errorprone 缺失的编译期注解 =====
+-dontwarn com.google.errorprone.annotations.**

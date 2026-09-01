@@ -58,6 +58,21 @@
 
 ---
 
+## 项目结构
+BlueFatFish_Git\
+├─ .gitignore
+├─ LICENSE
+├─ build.gradle.kts
+├─ settings.gradle.kts
+├─ gradle.properties
+├─ gradlew / gradlew.bat
+├─ version.properties
+├─ gradle\
+└─ app\
+   ├─ build.gradle.kts
+   ├─ .gitignore
+   └─ src\        ← 完整源码与资源
+
 ## 📥 下载
 
 点击右侧 **[Releases](https://github.com/Hjnandlizhiyan/BlueFatFish/releases)**，下载最新版 APK。

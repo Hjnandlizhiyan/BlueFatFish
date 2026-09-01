@@ -61,7 +61,7 @@
 ## 项目结构
 
 ```
-D:\BlueFatFish_Git\
+BlueFatFish_Git\
 ├─ .gitignore
 ├─ LICENSE
 ├─ build.gradle.kts

@@ -14,6 +14,8 @@ import com.bigfatfish.release.ui.home.DashboardScreen
 import com.bigfatfish.release.ui.home.DashboardViewModel
 import com.bigfatfish.release.ui.keylist.KeyListScreen
 import com.bigfatfish.release.ui.keylist.KeyListViewModel
+import com.bigfatfish.release.ui.price.PriceScreen
+import com.bigfatfish.release.ui.price.PriceViewModel
 import com.bigfatfish.release.ui.settings.SettingsScreen
 import com.bigfatfish.release.ui.settings.SettingsViewModel
 
@@ -46,6 +48,10 @@ fun AppNavHost() {
         }
         composable(Routes.GROUP_BUY) {
             GroupBuyScreen(onBack = { navController.popBackStack() })
+        }
+        composable(Routes.PRICE) {
+            val vm: PriceViewModel = viewModel()
+            PriceScreen(vm, onBack = { navController.popBackStack() })
         }
     }
 }

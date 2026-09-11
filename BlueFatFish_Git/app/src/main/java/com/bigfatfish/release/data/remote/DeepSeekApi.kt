@@ -6,6 +6,7 @@ import com.bigfatfish.release.data.model.ChatMessage
 import com.bigfatfish.release.data.model.ChatRequestBody
 import com.bigfatfish.release.data.model.ChatResponse
 import com.bigfatfish.release.data.model.ChatResult
+import com.bigfatfish.release.data.model.ThinkingConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
@@ -48,11 +49,15 @@ object DeepSeekApi {
         }
     }
 
-    /** AI 聊天（非流式），model 支持 deepseek-chat / deepseek-reasoner */
+    /**
+     * AI 聊天（非流式），model 支持 deepseek-flash / deepseek-v4-pro；
+     * 思考模式通过 thinking 请求参数开关，不再是独立模型。
+     */
     suspend fun chat(
         apiKey: String,
         messages: List<ChatMessage>,
         model: String,
+        enableThinking: Boolean,
         timeoutSeconds: Int = 60
     ): ChatResult = withContext(Dispatchers.IO) {
         val client = baseClient.newBuilder()
@@ -60,7 +65,11 @@ object DeepSeekApi {
             .build()
 
         val cleanMessages = messages.map { ChatMessage(role = it.role, content = it.content) }
-        val req = ChatRequestBody(model = model, messages = cleanMessages)
+        val req = ChatRequestBody(
+            model = model,
+            messages = cleanMessages,
+            thinking = ThinkingConfig(if (enableThinking) "enabled" else "disabled")
+        )
         val jsonBody = AppJson.encodeToString(req)
 
         val request = Request.Builder()

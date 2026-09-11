@@ -16,7 +16,7 @@ object ChatSettingsStore {
         contextLimit = 20,
         historyCount = 0,
         timeoutSeconds = 60,
-        defaultModel = "deepseek-chat",
+        defaultModel = "deepseek-flash",
         deepThinkDefault = false
     )
 
@@ -27,13 +27,18 @@ object ChatSettingsStore {
             else {
                 val s = AppJson.decodeFromString<ChatSettings>(raw)
                 val d = defaultSettings()
+                // 兼容旧模型名：deepseek-chat / deepseek-reasoner 已改为 deepseek-flash + thinking 参数
+                val migratedModel = when (s.defaultModel) {
+                    "deepseek-flash", "deepseek-v4-pro" -> s.defaultModel
+                    "deepseek-chat", "deepseek-reasoner" -> "deepseek-flash"
+                    else -> d.defaultModel
+                }
                 ChatSettings(
                     contextLimit = s.contextLimit,
                     historyCount = s.historyCount,
                     timeoutSeconds = s.timeoutSeconds,
-                    defaultModel = if (s.defaultModel == "deepseek-chat" || s.defaultModel == "deepseek-reasoner")
-                        s.defaultModel else d.defaultModel,
-                    deepThinkDefault = s.deepThinkDefault
+                    defaultModel = migratedModel,
+                    deepThinkDefault = s.deepThinkDefault || s.defaultModel == "deepseek-reasoner"
                 )
             }
         } catch (e: Exception) {

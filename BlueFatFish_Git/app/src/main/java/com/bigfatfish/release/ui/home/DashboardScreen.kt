@@ -284,8 +284,19 @@ private fun BalanceTab(
                         contentColor = colors.indigoBtn
                     ),
                     shape = RoundedCornerShape(8.dp),
+                    contentPadding = PaddingValues(horizontal = 6.dp, vertical = 0.dp),
                     modifier = Modifier.weight(1f)
-                ) { Text("历史趋势") }
+                ) { Text("历史趋势", maxLines = 1) }
+                Button(
+                    onClick = { onNavigate("price") },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = OrangeBadge.copy(alpha = colors.btnBgAlpha),
+                        contentColor = OrangeBadge
+                    ),
+                    shape = RoundedCornerShape(8.dp),
+                    contentPadding = PaddingValues(horizontal = 6.dp, vertical = 0.dp),
+                    modifier = Modifier.weight(1f)
+                ) { Text("价格一览", maxLines = 1) }
                 Button(
                     onClick = { onNavigate("settings") },
                     colors = ButtonDefaults.buttonColors(
@@ -293,8 +304,9 @@ private fun BalanceTab(
                         contentColor = colors.tealBtn
                     ),
                     shape = RoundedCornerShape(8.dp),
+                    contentPadding = PaddingValues(horizontal = 6.dp, vertical = 0.dp),
                     modifier = Modifier.weight(1f)
-                ) { Text("设置") }
+                ) { Text("设置", maxLines = 1) }
             }
         }
 

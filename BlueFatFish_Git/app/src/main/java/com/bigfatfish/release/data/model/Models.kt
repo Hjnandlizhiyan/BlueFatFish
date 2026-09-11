@@ -27,9 +27,15 @@ data class ChatMessage(
 )
 
 @Serializable
+data class ThinkingConfig(
+    val type: String
+)
+
+@Serializable
 data class ChatRequestBody(
     val model: String,
-    val messages: List<ChatMessage>
+    val messages: List<ChatMessage>,
+    val thinking: ThinkingConfig
 )
 
 @Serializable

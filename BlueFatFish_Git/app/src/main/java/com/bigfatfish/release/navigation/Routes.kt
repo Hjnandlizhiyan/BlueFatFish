@@ -7,4 +7,5 @@ object Routes {
     const val SETTINGS = "settings"
     const val BALANCE_HISTORY = "history"
     const val GROUP_BUY = "group_buy"
+    const val PRICE = "price"
 }

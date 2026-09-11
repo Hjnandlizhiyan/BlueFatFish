@@ -247,7 +247,7 @@ fun ChatScreen(
                     )
                 }
                 if (state.deepThink) {
-                    Text("deepseek-reasoner", fontSize = 12.sp, color = colors.textSecondary)
+                    Text("${state.defaultModel} · 思考模式", fontSize = 12.sp, color = colors.textSecondary)
                 }
             }
 

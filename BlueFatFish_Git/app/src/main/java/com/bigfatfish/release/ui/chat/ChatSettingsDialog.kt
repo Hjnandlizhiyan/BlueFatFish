@@ -98,15 +98,15 @@ fun ChatSettingsDialog(
                     Text("默认模型", fontSize = 14.sp, color = colors.textPrimary)
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         ModelButton(
-                            label = "deepseek-chat",
-                            selected = state.defaultModel == "deepseek-chat",
+                            label = "deepseek-flash",
+                            selected = state.defaultModel == "deepseek-flash",
                             colors = colors
-                        ) { chatViewModel.setDefaultModel("deepseek-chat") }
+                        ) { chatViewModel.setDefaultModel("deepseek-flash") }
                         ModelButton(
-                            label = "deepseek-reasoner",
-                            selected = state.defaultModel == "deepseek-reasoner",
+                            label = "deepseek-v4-pro",
+                            selected = state.defaultModel == "deepseek-v4-pro",
                             colors = colors
-                        ) { chatViewModel.setDefaultModel("deepseek-reasoner") }
+                        ) { chatViewModel.setDefaultModel("deepseek-v4-pro") }
                     }
                 }
 

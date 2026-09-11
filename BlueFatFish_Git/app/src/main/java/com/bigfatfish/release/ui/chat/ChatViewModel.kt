@@ -32,7 +32,7 @@ data class ChatUiState(
     val contextLimit: Int = 20,
     val historyCount: Int = 0,
     val timeoutSeconds: Int = 60,
-    val defaultModel: String = "deepseek-chat",
+    val defaultModel: String = "deepseek-flash",
     val deepThinkDefault: Boolean = false,
     val isLoading: Boolean = false,
     val showSettingsDialog: Boolean = false
@@ -128,13 +128,9 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
     fun updateHistoryCount(value: Int) = _uiState.update { it.copy(historyCount = value) }
     fun updateTimeoutSeconds(value: Int) = _uiState.update { it.copy(timeoutSeconds = value) }
 
-    fun setDefaultModel(model: String) = _uiState.update {
-        it.copy(defaultModel = model, deepThinkDefault = model == "deepseek-reasoner")
-    }
+    fun setDefaultModel(model: String) = _uiState.update { it.copy(defaultModel = model) }
 
-    fun setDeepThinkDefault(on: Boolean) = _uiState.update {
-        it.copy(deepThinkDefault = on, defaultModel = if (on) "deepseek-reasoner" else "deepseek-chat")
-    }
+    fun setDeepThinkDefault(on: Boolean) = _uiState.update { it.copy(deepThinkDefault = on) }
 
     fun openSettingsDialog() = _uiState.update { it.copy(showSettingsDialog = true) }
     fun closeSettingsDialog() = _uiState.update { it.copy(showSettingsDialog = false) }
@@ -165,9 +161,9 @@ class ChatViewModel(application: Application) : AndroidViewModel(application) {
             if (state.contextLimit > 0 && sendList.size > state.contextLimit) {
                 sendList = sendList.takeLast(state.contextLimit)
             }
-            val model = if (state.deepThink) "deepseek-reasoner" else "deepseek-chat"
+            val model = state.defaultModel
             try {
-                val result = DeepSeekApi.chat(key, sendList, model, state.timeoutSeconds)
+                val result = DeepSeekApi.chat(key, sendList, model, state.deepThink, state.timeoutSeconds)
                 val assistantMsg = ChatMessage(
                     id = genMsgId(),
                     role = "assistant",

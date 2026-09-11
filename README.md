@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="images/icon.jpg" alt="蓝色大肥鱼" width="120" />
+<img src="images/icon.jpg?v=20260911" alt="蓝色大肥鱼" width="120" />
 
 # 🐟 蓝色大肥鱼 (BlueFatFish)
 
@@ -33,22 +33,22 @@
 ### 💰 余额管理
 
 <div align="center">
-  <img src="images/show_01.jpg" alt="余额查询" width="30%" />
-  <img src="images/show_02.jpg" alt="历史趋势" width="30%" />
-  <img src="images/show_03.jpg" alt="余额详情" width="30%" />
+  <img src="images/show_01.jpg?v=20260911" alt="余额查询" width="30%" />
+  <img src="images/show_02.jpg?v=20260911" alt="历史趋势" width="30%" />
+  <img src="images/show_03.jpg?v=20260911" alt="余额详情" width="30%" />
 </div>
 
 ### 🔔 低余额通知
 
 <div align="center">
-  <img src="images/show_04.jpg" alt="低余额提醒" width="30%" />
+  <img src="images/show_04.jpg?v=20260911" alt="低余额提醒" width="30%" />
 </div>
 
 ### 🧭 价格一览
 
 <div align="center">
-  <img src="images/show_08.jpg" alt="价格一览 · 高峰/空闲时段判定" width="30%" />
-  <img src="images/show_09.jpg" alt="价格一览 · 模型价格参考" width="30%" />
+  <img src="images/show_08.jpg?v=20260911" alt="价格一览 · 高峰/空闲时段判定" width="30%" />
+  <img src="images/show_09.jpg?v=20260911" alt="价格一览 · 模型价格参考" width="30%" />
 </div>
 
 > 🔄 **规则自动更新**：收费时段规则、模型名称与价格会自动从 DeepSeek 官网爬取并缓存到本地，实时判断当前处于高峰还是空闲计费时段；无网络或官网改版时自动回退内置数据，离线同样可用。
@@ -56,14 +56,14 @@
 ### 💬 AI 聊天
 
 <div align="center">
-  <img src="images/show_06.jpg" alt="聊天页面" width="30%" />
-  <img src="images/show_07.jpg" alt="历史聊天" width="30%" />
+  <img src="images/show_06.jpg?v=20260911" alt="聊天页面" width="30%" />
+  <img src="images/show_07.jpg?v=20260911" alt="历史聊天" width="30%" />
 </div>
 
 ### 🌙 深色模式
 
 <div align="center">
-  <img src="images/show_05.jpg" alt="深色模式" width="30%" />
+  <img src="images/show_05.jpg?v=20260911" alt="深色模式" width="30%" />
 </div>
 
 ---
